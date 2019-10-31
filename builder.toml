@@ -24,6 +24,10 @@ description = "Ubuntu bionic base image with buildpacks for Java"
   uri = "https://github.com/making/jvmkill-cnb/releases/download/0.1.0/jvmkill-cnb-0.1.0.tgz"
 
 [[buildpacks]]
+  id = "am.ik.buildpacks.memorycalculator"
+  uri = "https://github.com/making/memory-calculator-cnb/releases/download/0.1.0/memory-calculator-cnb-0.1.0.tgz"
+
+[[buildpacks]]
   id = "org.cloudfoundry.debug"
   uri = "https://storage.googleapis.com/cnb-buildpacks/debug-cnb/org.cloudfoundry.debug-1.0.89.tgz"
 
@@ -52,6 +56,11 @@ description = "Ubuntu bionic base image with buildpacks for Java"
 
   [[order.group]]
     id = "am.ik.buildpacks.jvmkill"
+    version = "0.1.0"
+    optional = true 
+
+  [[order.group]]
+    id = "am.ik.buildpacks.memorycalculator"
     version = "0.1.0"
     optional = true 
 
