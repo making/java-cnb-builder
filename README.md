@@ -5,8 +5,8 @@
 * [`build-system-cnb`](https://github.com/cloudfoundry/build-system-cnb)
 * [`jvm-application-cnb`](https://github.com/cloudfoundry/jvm-application-cnb)
 * [`procfile-cnb`](https://github.com/cloudfoundry/procfile-cnb)
-* [`jvmkill`](https://github.com/making/jvmkill-cnb)
-* [`memory-calculator`](https://github.com/making/memory-calculator-cnb)
+* [`jvmkill-cnb`](https://github.com/making/jvmkill-cnb)
+* [`memory-calculator-cnb`](https://github.com/making/memory-calculator-cnb)
 * [`debug-cnb`](https://github.com/cloudfoundry/debug-cnb)
 * [`jmx-cnb`](https://github.com/cloudfoundry/jmx-cnb)
 
