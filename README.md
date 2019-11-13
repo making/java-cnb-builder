@@ -4,6 +4,7 @@
 * [`openjdk-cnb`](https://github.com/cloudfoundry/openjdk-cnb)
 * [`build-system-cnb`](https://github.com/cloudfoundry/build-system-cnb)
 * [`jvm-application-cnb`](https://github.com/cloudfoundry/jvm-application-cnb)
+* [`spring-boot-cnb`](https://github.com/cloudfoundry/spring-boot-cnb)
 * [`procfile-cnb`](https://github.com/cloudfoundry/procfile-cnb)
 * [`jvmkill-cnb`](https://github.com/making/jvmkill-cnb)
 * [`memory-calculator-cnb`](https://github.com/making/memory-calculator-cnb)

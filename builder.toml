@@ -20,6 +20,10 @@ description = "Ubuntu bionic base image with buildpacks for Java"
   uri = "https://storage.googleapis.com/cnb-buildpacks/procfile-cnb/org.cloudfoundry.procfile-1.0.39.tgz"
 
 [[buildpacks]]
+  id = "org.cloudfoundry.springboot"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/spring-boot-cnb/org.cloudfoundry.springboot-1.0.106.tgz"
+
+[[buildpacks]]
   id = "am.ik.buildpacks.jvmkill"
   uri = "https://github.com/making/jvmkill-cnb/releases/download/0.1.0/jvmkill-cnb-0.1.0.tgz"
 
@@ -48,6 +52,10 @@ description = "Ubuntu bionic base image with buildpacks for Java"
   [[order.group]]
     id = "org.cloudfoundry.jvmapplication"
     version = "1.0.78"
+
+  [[order.group]]
+    id = "org.cloudfoundry.springboot"
+    version = "1.0.106"
 
   [[order.group]]
     id = "org.cloudfoundry.procfile"
