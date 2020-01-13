@@ -5,23 +5,23 @@ description = "Ubuntu bionic base image with buildpacks for Java"
 
 [[buildpacks]]
   id = "org.cloudfoundry.openjdk"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/openjdk-cnb/org.cloudfoundry.openjdk-1.0.56.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/openjdk-cnb/org.cloudfoundry.openjdk-1.0.80.tgz"
 
 [[buildpacks]]
   id = "org.cloudfoundry.buildsystem"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/build-system-cnb/org.cloudfoundry.buildsystem-1.0.125.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/build-system-cnb/org.cloudfoundry.buildsystem-1.0.186.tgz"
 
 [[buildpacks]]
   id = "org.cloudfoundry.jvmapplication"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/jvm-application-cnb/org.cloudfoundry.jvmapplication-1.0.78.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/jvm-application-cnb/org.cloudfoundry.jvmapplication-1.0.113.tgz"
 
 [[buildpacks]]
   id = "org.cloudfoundry.procfile"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/procfile-cnb/org.cloudfoundry.procfile-1.0.39.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/procfile-cnb/org.cloudfoundry.procfile-1.0.62.tgz"
 
 [[buildpacks]]
   id = "org.cloudfoundry.springboot"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/spring-boot-cnb/org.cloudfoundry.springboot-1.0.106.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/spring-boot-cnb/org.cloudfoundry.springboot-1.0.157.tgz"
 
 [[buildpacks]]
   id = "am.ik.buildpacks.jvmkill"
@@ -33,33 +33,33 @@ description = "Ubuntu bionic base image with buildpacks for Java"
 
 [[buildpacks]]
   id = "org.cloudfoundry.debug"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/debug-cnb/org.cloudfoundry.debug-1.0.100.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/debug-cnb/org.cloudfoundry.debug-1.1.17.tgz"
 
 [[buildpacks]]
   id = "org.cloudfoundry.jmx"
-  uri = "https://storage.googleapis.com/cnb-buildpacks/jmx-cnb/org.cloudfoundry.jmx-1.0.101.tgz"
+  uri = "https://storage.googleapis.com/cnb-buildpacks/jmx-cnb/org.cloudfoundry.jmx-1.0.153.tgz"
 
 [[order]]
   [[order.group]]
     id = "org.cloudfoundry.openjdk"
-    version = "1.0.56"
+    version = "1.0.80"
 
   [[order.group]]
     id = "org.cloudfoundry.buildsystem"
-    version = "1.0.125"
+    version = "1.0.186"
     optional = true 
 
   [[order.group]]
     id = "org.cloudfoundry.jvmapplication"
-    version = "1.0.78"
+    version = "1.0.113"
 
   [[order.group]]
     id = "org.cloudfoundry.springboot"
-    version = "1.0.106"
+    version = "1.0.157"
 
   [[order.group]]
     id = "org.cloudfoundry.procfile"
-    version = "1.0.39"
+    version = "1.0.62"
     optional = true
 
   [[order.group]]
@@ -74,12 +74,12 @@ description = "Ubuntu bionic base image with buildpacks for Java"
 
   [[order.group]]
     id = "org.cloudfoundry.debug"
-    version = "1.0.100"
+    version = "1.1.17"
     optional = true
  
   [[order.group]]
     id = "org.cloudfoundry.jmx"
-    version = "1.0.101"
+    version = "1.0.153"
     optional = true
 
 [stack]
