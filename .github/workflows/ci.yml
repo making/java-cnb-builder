@@ -24,7 +24,7 @@ jobs:
         wget -q https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz
         tar xzf pack-*.tgz
         rm -f pack-*.tgz
-        install pack /usr/local/bin/pack
+        sudo install pack /usr/local/bin/pack
     - name: create-builder
       run: |
         pack create-builder -b builder.toml making/java-cnb-builder
