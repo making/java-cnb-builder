@@ -19,7 +19,7 @@ jobs:
         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
     - name: install-builder
       env:
-        PACK_VERSION: 0.6.0
+        PACK_VERSION: 0.7.0
       run: |
         wget -q https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz
         tar xzf pack-*.tgz
