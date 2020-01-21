@@ -1,5 +1,7 @@
 # Cloud Native Buildpacks for Java
 
+This builder uses lifecycle v0.5.0. So maake sure you are using `pack` v0.5.0 or later.
+
 ## Included Buildpacks
 * [`openjdk-cnb`](https://github.com/cloudfoundry/openjdk-cnb)
 * [`build-system-cnb`](https://github.com/cloudfoundry/build-system-cnb)
