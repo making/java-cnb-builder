@@ -27,7 +27,7 @@ jobs:
         sudo install pack /usr/local/bin/pack
     - name: create-builder
       run: |
-        pack create-builder -v -b builder.toml making/java-cnb-builder
+        pack create-builder -v -b builder.toml making/java-cnb-builder-test:${GITHUB_SHA}
     - name: Set up Java
       uses: actions/setup-java@v1
       with:
@@ -53,7 +53,7 @@ jobs:
           ${{ runner.os }}-maven-
     - name: test-builder
       run: |
-        pack build foo --builder making/java-cnb-builder --path hello/target/hello*.jar
+        pack build foo --builder making/java-cnb-builder-test:${GITHUB_SHA} --path hello/target/hello*.jar
         docker images
     - name: publish builder
       if: github.ref == 'refs/heads/master'
