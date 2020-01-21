@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker-login
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+    - name: install-builder
+      env:
+        PACK_VERSION: 0.6.0
+      run: |
+        wget -q https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz
+        tar xzf pack-*.tgz
+        rm -f pack-*.tgz
+        install pack /usr/local/bin/pack
+    - name: create-builder
+      run: |
+        pack create-builder -b builder.toml making/java-cnb-builder
+    - name: test-builder
+      run: |
+        docker images
+    - name: publish builder
+      if: github.ref == 'refs/heads/master'
+      run: |
+        pack create-builder -b builder.toml making/java-cnb-builder --publish      
