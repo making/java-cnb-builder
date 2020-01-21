@@ -32,7 +32,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11.x
-    - name: Build a sample application
+    - name: Create a sample project
       run: |
         curl https://start.spring.io/starter.tgz \
           -s \
@@ -41,9 +41,7 @@ jobs:
           -d baseDir=hello \
           -d dependencies=web,actuator \
           -d packageName=com.example \
-          -d applicationName=HelloApplication | tar -xzvf -
-        cd hello
-        ./mvnw package -DskipTests            
+          -d applicationName=HelloApplication | tar -xzvf -          
     - name: Cache Maven
       uses: actions/cache@v1
       with:
@@ -51,6 +49,10 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+    - name: Build the sample project
+      run: |
+        cd hello
+        ./mvnw package -DskipTests  
     - name: test-builder
       run: |
         pack build foo --builder making/java-cnb-builder-test:${GITHUB_SHA} --path hello/target/hello*.jar
