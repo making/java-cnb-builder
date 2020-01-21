@@ -53,7 +53,7 @@ jobs:
           ${{ runner.os }}-maven-
     - name: test-builder
       run: |
-        pack build foo --builder making/java-cnb-builder --path target/hello*.jar
+        pack build foo --builder making/java-cnb-builder --path hello/target/hello*.jar
         docker images
     - name: publish builder
       if: github.ref == 'refs/heads/master'
