@@ -28,6 +28,17 @@ jobs:
     - name: create-builder
       run: |
         pack create-builder -v -b builder.toml making/java-cnb-builder
+    - name: Set up Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: ${{ matrix.java }}
+    - name: Cache Maven
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
     - name: test-builder
       run: |
         curl https://start.spring.io/starter.tgz \
@@ -38,7 +49,9 @@ jobs:
           -d dependencies=web,actuator \
           -d packageName=com.example \
           -d applicationName=HelloApplication | tar -xzvf -
-        pack build foo --builder making/java-cnb-builder --path hello
+        cd hello
+        ./mvnw package -DskipTests          
+        pack build foo --builder making/java-cnb-builder --path target/hello*.jar
         docker images
     - name: publish builder
       if: github.ref == 'refs/heads/master'
