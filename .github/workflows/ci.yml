@@ -27,11 +27,20 @@ jobs:
         sudo install pack /usr/local/bin/pack
     - name: create-builder
       run: |
-        pack create-builder -b builder.toml making/java-cnb-builder
+        pack create-builder -v -b builder.toml making/java-cnb-builder
     - name: test-builder
       run: |
+        curl https://start.spring.io/starter.tgz \
+          -s \
+          -d javaVersion=11 \
+          -d artifactId=hello \
+          -d baseDir=hello \
+          -d dependencies=web,actuator \
+          -d packageName=com.example \
+          -d applicationName=HelloApplication | tar -xzvf -
+        pack build foo --builder making/java-cnb-builder --path hello
         docker images
     - name: publish builder
       if: github.ref == 'refs/heads/master'
       run: |
-        pack create-builder -b builder.toml making/java-cnb-builder --publish      
+        pack create-builder -v -b builder.toml making/java-cnb-builder --publish      
