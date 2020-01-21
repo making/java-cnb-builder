@@ -32,14 +32,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11.x
-    - name: Cache Maven
-      uses: actions/cache@v1
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
-    - name: test-builder
+    - name: Build a sample application
       run: |
         curl https://start.spring.io/starter.tgz \
           -s \
@@ -50,7 +43,16 @@ jobs:
           -d packageName=com.example \
           -d applicationName=HelloApplication | tar -xzvf -
         cd hello
-        ./mvnw package -DskipTests          
+        ./mvnw package -DskipTests            
+    - name: Cache Maven
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: test-builder
+      run: |
         pack build foo --builder making/java-cnb-builder --path target/hello*.jar
         docker images
     - name: publish builder
