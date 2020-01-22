@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: docker-login
+    - name: Docker Login
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-    - name: install-builder
+    - name: Install Pack
       env:
         PACK_VERSION: 0.7.0
       run: |
@@ -25,7 +25,7 @@ jobs:
         tar xzf pack-*.tgz
         rm -f pack-*.tgz
         sudo install pack /usr/local/bin/pack
-    - name: create-builder
+    - name: Create Builder
       run: |
         pack create-builder -v -b builder.toml making/java-cnb-builder-test:${GITHUB_SHA}
     - name: Set up Java
@@ -53,11 +53,17 @@ jobs:
       run: |
         cd hello
         ./mvnw package -DskipTests  
-    - name: test-builder
+    - name: Test Builder
       run: |
         pack build foo --builder making/java-cnb-builder-test:${GITHUB_SHA} --path hello/target/hello*.jar
         docker images
-    - name: publish builder
+        docker run --rm \
+          -m 128m \
+          -e SPRING_MAIN_WEB_APPLICATION_TYPE=none \
+          -e JAVA_OPTS=-XX:ReservedCodeCacheSize=32M \
+          -e BPL_THREAD_COUNT=10 \
+          foo
+    - name: Publish Builder
       if: github.ref == 'refs/heads/master'
       run: |
         pack create-builder -v -b builder.toml making/java-cnb-builder --publish      
