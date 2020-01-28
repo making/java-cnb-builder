@@ -17,6 +17,10 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+    - name: Check
+      run: |
+        docker run --rm cloudfoundry/run:base-cnb cat /sys/fs/cgroup/memory/memory.limit_in_bytes
+        docker run --rm heroku/pack:18 cat /sys/fs/cgroup/memory/memory.limit_in_bytes      
     - name: Install Pack
       env:
         PACK_VERSION: 0.7.0
