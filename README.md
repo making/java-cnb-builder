@@ -1,3 +1,6 @@
+**⚠️This builder is no longer maintenained as [Official one](https://github.com/cloudfoundry/java-cnb) has supported memory-calculatr and jvmkill. Please use the official builder.**
+
+
 # Cloud Native Buildpacks for Java
 
 This builder uses lifecycle v0.5.0. So maake sure you are using `pack` v0.5.0 or later.
